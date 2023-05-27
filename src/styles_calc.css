@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    height: 100vh;
+    width: 100vw;
+    /* Fondo de Pantalla */
+    background-image: url(./assets/svg/fondo.svg);
+}
+
+
+@font-face {
+    font-family: 'Noto Serif Hebrew';
+    src: url(./assets/font/Noto_Serif_Hebrew);
+}
+
+.padre_calc {
+    /* Fuente */
+    font-family: 'Noto Serif Hebrew';
+    font-size: 30px;
+    color: #736b6b;
+
+    /* Fondo Calculadora */
+
+    background: #4e6e81c2;
+
+    /* Posicionamiento en el body */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    border-radius: 15px;
+    width: 600px;
+    height: 550px;
+    padding: 20px 15px;
+    justify-content: center;
+}
+
+/* POSICIONASMIENTO */
+.grid_calc {
+    background: #9b9b9b85;
+
+    width: 100%;
+    height: 80%;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+
+
+.resultado {
+    background: #F0EEED;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+
+    border-radius: 15px;
+}
+
+.numeros {
+    background: #F9DBBB;
+    /* Colocar transparencia */
+    width: 120px;
+    height: 60px;
+
+    border-radius: 30px;
+
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 60px;
+
+    margin: 10px 0;
+
+
+}
+
+.operacion {
+    background: #2E3840;
+    width: 120px;
+    height: 60px;
+    ;
+    border-radius: 30px;
+
+    /* Fuente */
+    color: #9b9b9b;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 60px;
+
+    margin: 10px 0;
+}
+
+.operacion_reset {
+    background: #2E3840;
+    width: 120px;
+    height: 140px;
+
+    border-radius: 30px;
+
+    /* Fuente */
+    color: #9b9b9b;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 140px;
+}
+
+.igual {
+    background: #FF0303;
+    width: 120px;
+    height: 70px;
+    margin: 5px 10px 0 10px;
+    border-radius: 35px;
+
+    /* Fuente */
+    color: #9b9b9b;
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 70px;
+    /* line-height centra el texto verticalmente, su valor sería igual a la altura del contenedor */
+
+    margin: 5px 0;
+
+
+}
+
+
+
+/* .numero {
+    font-style: ;
+} */
