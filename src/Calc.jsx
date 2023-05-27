@@ -22,7 +22,7 @@ export function Calc() {
   const [operacion, setOperacion] = useState('')
   const [resultado, setResultado] = useState('')
 
-  const digitos = num1
+  const digitos = '🍎'
 
 
   //Cuatro Funciones
