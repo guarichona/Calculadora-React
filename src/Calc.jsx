@@ -36,35 +36,36 @@ export function Calc() {
   }
 
   const retorno = () => {
-
+    const n1 = parseInt(num1);
+    const n2 = parseInt(num2);
     switch (operacion) {
       case '+':
         console.log('Suma');
-        setResultado(() => ` = ${num1 + num2}`)
+        setResultado(() => ` = ${n1 + n2}`)
         console.log(resultado);
         break;
 
       case '-':
         console.log('Resta');
-        setResultado(() => ` = ${num1 - num2}`)
+        setResultado(() => ` = ${n1 - n2}`)
         console.log(resultado);
         break;
 
       case '*':
         console.log('Multiplicacion');
-        setResultado(() => ` = ${num1 * num2}`)
+        setResultado(() => ` = ${n1 * n2}`)
         console.log(resultado);
         break;
 
       case '/':
         console.log('Division');
-        setResultado(() => ` = ${num1 / num2}`)
+        setResultado(() => ` = ${n1 / n2}`)
         console.log(resultado);
         break;
 
       case '%':
         console.log('Porcentaje');
-        setResultado(() => ` = ${num1 * num2 * 0.01} `)
+        setResultado(() => ` = ${n1 * n2 * 0.01} `)
 
       default:
         return ('😐')
@@ -102,15 +103,14 @@ export function Calc() {
   };
 
   return (
+
     <div className="padre_calc">
 
       {/* <! ____________________Resultado__________________ --> */}
 
       <div className="resultado">
-
+        <div> {num1} {operacion} {num2} {resultado} </div>
       </div>
-      {/* {num1} {operacion} {num2} {resultado} </div> */}
-
 
       <div className="grid_calc">
 
@@ -118,10 +118,10 @@ export function Calc() {
 
         <div className="operacion" onClick={() => setOperacion(() => '*')}>×</div>
 
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => 1) : setNum2(() => 1)}>1</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => 4) : setNum2(() => 4)}>4</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => 7) : setNum2(() => 7)}>7</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => 0) : setNum2(() => 0)}>0</div>
+        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '1') : setNum2(() => num2 + 1)}>1</div>
+        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '4') : setNum2(() => num2 + 4)}>4</div>
+        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '7') : setNum2(() => num2 + 7)}>7</div>
+        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '0') : setNum2(() => num2 + 0)}>0</div>
 
 
 
@@ -129,9 +129,9 @@ export function Calc() {
 
         <div className="operacion" onClick={() => setOperacion(() => '/')}>÷</div>
 
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => 2) : setNum2(() => 2)}>2</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => 5) : setNum2(() => 5)}>5</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => 8) : setNum2(() => 8)}>8</div>
+        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '2') : setNum2(() => num2 + 2)}>2</div>
+        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '5') : setNum2(() => num2 + 5)}>5</div>
+        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '8') : setNum2(() => num2 + 8)}>8</div>
 
         <div className="operacion" onClick={() => setOperacion(() => '%')}>%</div>
 
@@ -141,14 +141,14 @@ export function Calc() {
 
         <div className="operacion" onClick={() => setOperacion(() => '-')}>-</div>
 
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => 3) : setNum2(() => 3)}>3</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => 6) : setNum2(() => 6)}>6</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => 9) : setNum2(() => 9)}>9</div>
+        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '3') : setNum2(() => num2 + 3)}>3</div>
+        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '6') : setNum2(() => num2 + 6)}>6</div>
+        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '9') : setNum2(() => num2 + 9)}>9</div>
 
         <div className="igual" onClick={retorno}> = </div>
 
 
-        {/* <!-- ____________________Colum 4____________________ --> */}
+        {/* <-- ____________________Colum 4____________________ --> */}
 
         <div className="operacion" onClick={() => setOperacion(() => '+')}>+</div>
 
@@ -157,6 +157,7 @@ export function Calc() {
 
       </div>
     </div>
+
   )
 }
 
