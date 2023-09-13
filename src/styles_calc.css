@@ -53,8 +53,6 @@ body {
     flex-flow: column wrap;
     justify-content: space-between;
     align-items: center;
-
-
 }
 
 
@@ -82,8 +80,6 @@ body {
     line-height: 60px;
 
     margin: 10px 0;
-
-
 }
 
 .operacion {
@@ -134,8 +130,6 @@ body {
     /* line-height centra el texto verticalmente, su valor sería igual a la altura del contenedor */
 
     margin: 5px 0;
-
-
 }
 
 
