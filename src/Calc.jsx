@@ -16,14 +16,18 @@ export function Calc() {
 
   //Dos estados
 
-  const [num1, setNum1] = useState('')
+  const [num1, setNum1] = useState()
   const [num2, setNum2] = useState('')
 
   const [operacion, setOperacion] = useState('')
   const [resultado, setResultado] = useState('')
 
-  const digitos = '🍎'
+  //Prueba para que me acepte más de un digito
+  const [digitos, setDigitos] = useState()
 
+  const handleDigitar = (event) => {
+    setDigitos(event.target.value)
+  };
 
   //Cuatro Funciones
 
@@ -102,7 +106,10 @@ export function Calc() {
 
       {/* <! ____________________Resultado__________________ --> */}
 
-      <div className="resultado">{num1} {operacion} {num2} {resultado} </div>
+      <div className="resultado">
+
+      </div>
+      {/* {num1} {operacion} {num2} {resultado} </div> */}
 
 
       <div className="grid_calc">
