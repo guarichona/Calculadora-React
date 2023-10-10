@@ -1,16 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-
-// export const Suma = ({ num1, num2 }) => {
-
-//   const operSuma = num1 + num2
-
-//   return (
-//     operSuma
-//   )
-// }
-
-
+import { calculo } from './OperMatematica'
 
 export function Calc() {
 
@@ -22,56 +12,30 @@ export function Calc() {
   const [operacion, setOperacion] = useState('')
   const [resultado, setResultado] = useState('')
 
+
   //Prueba para que me acepte más de un digito
   const [digitos, setDigitos] = useState()
 
-  const handleDigitar = (event) => {
-    setDigitos(event.target.value)
-  };
+  const handleDigitar = (numero) => {
+    if (operacion == '') { // Si no hay operacion, se agrega al primer numero
+      let numAuxiliar = num1
+      if (numAuxiliar == undefined) { // si no esta definido, lo hago string para que no me de errores de concatenacion
+        numAuxiliar = ''
+      }
+      numAuxiliar = numAuxiliar.toString() + numero // uso ToString para que se concatene y no se sumen los numeros dentro de la variable numAuxiliar
+      // la suma seria '1' + 1 = '11', sino seria 1 + 1 = 2
+      setNum1(numAuxiliar) // seteo el valor de num1 con el valor de numAuxiliar
+    } else { // si hay operacion, se agrega al segundo numero
+      if (resultado != '') { // si hay un resultado, se resetea la calculadora
+        setNum1(numero)
+        setNum2('')
+        setOperacion('')
+        setResultado('')
 
-  //Cuatro Funciones
-
-  const recepcionNum = () => {
-
-  }
-
-  const retorno = () => {
-    const n1 = parseInt(num1);
-    const n2 = parseInt(num2);
-    switch (operacion) {
-      case '+':
-        console.log('Suma');
-        setResultado(() => ` = ${n1 + n2}`)
-        console.log(resultado);
-        break;
-
-      case '-':
-        console.log('Resta');
-        setResultado(() => ` = ${n1 - n2}`)
-        console.log(resultado);
-        break;
-
-      case '*':
-        console.log('Multiplicacion');
-        setResultado(() => ` = ${n1 * n2}`)
-        console.log(resultado);
-        break;
-
-      case '/':
-        console.log('Division');
-        setResultado(() => ` = ${n1 / n2}`)
-        console.log(resultado);
-        break;
-
-      case '%':
-        console.log('Porcentaje');
-        setResultado(() => ` = ${n1 * n2 * 0.01} `)
-
-      default:
-        return ('😐')
-
+      }
+      else { setNum2(num2 + numero) } // seteo el valor de num2 con el valor de num2 + el numero que se presiono
     }
-  }
+  };
 
   const handleReset = () => {
 
@@ -109,7 +73,7 @@ export function Calc() {
       {/* <! ____________________Resultado__________________ --> */}
 
       <div className="resultado">
-        <div> {num1} {operacion} {num2} {resultado} </div>
+        <div> {num1} {operacion} {num2} {resultado}</div>
       </div>
 
       <div className="grid_calc">
@@ -118,10 +82,10 @@ export function Calc() {
 
         <div className="operacion" onClick={() => setOperacion(() => '*')}>×</div>
 
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '1') : setNum2(() => num2 + 1)}>1</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '4') : setNum2(() => num2 + 4)}>4</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '7') : setNum2(() => num2 + 7)}>7</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '0') : setNum2(() => num2 + 0)}>0</div>
+        <div className="numeros" onClick={() => handleDigitar(1)}>1</div>
+        <div className="numeros" onClick={() => handleDigitar(4)}>4</div>
+        <div className="numeros" onClick={() => handleDigitar(7)}>7</div>
+        <div className="numeros" onClick={() => handleDigitar(0)}>0</div>
 
 
 
@@ -129,9 +93,9 @@ export function Calc() {
 
         <div className="operacion" onClick={() => setOperacion(() => '/')}>÷</div>
 
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '2') : setNum2(() => num2 + 2)}>2</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '5') : setNum2(() => num2 + 5)}>5</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '8') : setNum2(() => num2 + 8)}>8</div>
+        <div className="numeros" onClick={() => handleDigitar(2)}>2</div>
+        <div className="numeros" onClick={() => handleDigitar(5)}>5</div>
+        <div className="numeros" onClick={() => handleDigitar(8)}>8</div>
 
         <div className="operacion" onClick={() => setOperacion(() => '%')}>%</div>
 
@@ -141,11 +105,11 @@ export function Calc() {
 
         <div className="operacion" onClick={() => setOperacion(() => '-')}>-</div>
 
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '3') : setNum2(() => num2 + 3)}>3</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '6') : setNum2(() => num2 + 6)}>6</div>
-        <div className="numeros" onClick={() => operacion == '' ? setNum1(() => (num1 ?? '').toString() + '9') : setNum2(() => num2 + 9)}>9</div>
+        <div className="numeros" onClick={() => handleDigitar(3)}>3</div>
+        <div className="numeros" onClick={() => handleDigitar(6)}>6</div>
+        <div className="numeros" onClick={() => handleDigitar(9)}>9</div>
 
-        <div className="igual" onClick={retorno}> = </div>
+        <div className="igual" onClick={() => setResultado(calculo(num1, num2, operacion))}> = </div>
 
 
         {/* <-- ____________________Colum 4____________________ --> */}
